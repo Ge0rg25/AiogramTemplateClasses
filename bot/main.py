@@ -12,7 +12,7 @@ def start_bot():
     bot = Bot(token=TgKeys.TOKEN, parse_mode='HTML')
     dp = Dispatcher(bot, storage=MemoryStorage())
     register_models()
-    Filters.register_all_filters()
+    Filters(dp).register_all_filters()
     register_all_handlers(dp, bot)
     executor.start_polling(dp, skip_updates=True)
 

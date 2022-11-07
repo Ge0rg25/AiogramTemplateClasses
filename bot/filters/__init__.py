@@ -1,1 +1,1 @@
-from .main import register_all_filters
+from .main import Filters

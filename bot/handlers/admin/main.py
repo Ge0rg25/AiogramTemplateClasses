@@ -1,6 +1,10 @@
-from aiogram import Dispatcher
+from aiogram import Dispatcher, Bot
 
 
-def register_admin_handlers(dp: Dispatcher):
-    # todo: register all admin handlers
-    pass
+class AdminHandlers:
+    def __init__(self, dp: Dispatcher, bot: Bot):
+        self.dp = dp
+        self.bot = bot
+
+    def register_handlers(self):
+        pass

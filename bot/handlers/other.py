@@ -1,12 +1,15 @@
-from aiogram import Dispatcher
-from aiogram.types import Message
+from aiogram import Dispatcher, Bot
+from aiogram import types
 
 
-async def echo(msg: Message):
-    # todo: remove echo example:3
-    await msg.answer(msg.text)
+class OtherHandlers:
+    def __init__(self, dp: Dispatcher, bot: Bot):
+        self.dp = dp
+        self.bot = bot
 
+    async def echo(self, msg: types.Message):
+        # todo: remove echo example:3
+        await self.bot.send_message(msg.from_user.id, msg.text)
 
-def register_other_handlers(dp: Dispatcher) -> None:
-    # todo: register all other handlers
-    dp.register_message_handler(echo, content_types=['text'])
+    def register_handlers(self) -> None:
+        self.dp.register_message_handler(self.echo, content_types=['text'])

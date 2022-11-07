@@ -1,15 +1,15 @@
-from aiogram import Dispatcher
+from aiogram import Dispatcher, Bot
 
-from bot.handlers.admin import register_admin_handlers
-from bot.handlers.other import register_other_handlers
-from bot.handlers.user import register_user_handlers
+from bot.handlers.admin import AdminHandlers
+from bot.handlers.other import OtherHandlers
+from bot.handlers.user import UserHandlerExample
 
 
-def register_all_handlers(dp: Dispatcher) -> None:
+def register_all_handlers(dp: Dispatcher, bot: Bot) -> None:
     handlers = (
-        register_user_handlers,
-        register_admin_handlers,
-        register_other_handlers,
+        UserHandlerExample,
+        AdminHandlers,
+        OtherHandlers,
     )
     for handler in handlers:
-        handler(dp)
+        handler(dp, bot).register_handlers()

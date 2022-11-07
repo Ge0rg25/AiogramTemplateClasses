@@ -1,6 +1,10 @@
 from aiogram import Dispatcher
 
 
-def register_all_filters(dp: Dispatcher):
-    # todo: register all filters - dp.bind_filter()
-    pass
+class Filters:
+    def __init__(self, dp: Dispatcher):
+        self.dp = dp
+
+    def register_all_filters(self, dp: Dispatcher):
+        # todo: register all filters - dp.bind_filter()
+        pass
